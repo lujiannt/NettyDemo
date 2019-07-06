@@ -17,6 +17,7 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        System.out.println(cause.toString());
         System.out.println("client: 和服务端断开了");
     }
 }

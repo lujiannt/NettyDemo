@@ -17,7 +17,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("有一个新的连接");
 
         //此处无需先将内容写入bytebuf，将交由serverEncoder处理
-        ChannelFuture channelFuture = ctx.writeAndFlush("1314");
+        ChannelFuture channelFuture = ctx.writeAndFlush("1314abcd");
 
         channelFuture.addListener(new ChannelFutureListener() {
             @Override
