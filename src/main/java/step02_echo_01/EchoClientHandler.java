@@ -1,4 +1,4 @@
-package step02_echo;
+package step02_echo_01;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -10,7 +10,7 @@ import io.netty.util.CharsetUtil;
 /**
  * 客户端具体handler
  */
-public class EchoIntClientHandler extends ChannelInboundHandlerAdapter {
+public class EchoClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("client: 连上了");

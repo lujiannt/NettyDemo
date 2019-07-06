@@ -1,4 +1,4 @@
-package step02_echo;
+package step02_echo_01;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -10,13 +10,13 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * 丢弃服务器，该服务器不做任何处理
+ * 服务端、客户端简单通讯【注意】未使用编解码，直接使用unpooled工具类解析字符串
  */
-public class EchoIntServer {
+public class EchoServer {
     //绑定端口
     private int port = 10086;
 
-    public EchoIntServer(int port) {
+    public EchoServer(int port) {
         this.port = port;
     }
 
@@ -38,7 +38,7 @@ public class EchoIntServer {
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         //添加自定义handler
-                        socketChannel.pipeline().addLast(new EchoIntServerHandler());
+                        socketChannel.pipeline().addLast(new EchoServerHandler());
                     }
                 })
                 //4.服务端进行相关设置, 指定等待连接队列长度
@@ -62,6 +62,6 @@ public class EchoIntServer {
     }
 
     public static void main(String[] args) {
-        new EchoIntServer(10086).startServer();
+        new EchoServer(10086).startServer();
     }
 }

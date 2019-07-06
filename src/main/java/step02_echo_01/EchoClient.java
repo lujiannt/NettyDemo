@@ -1,4 +1,4 @@
-package step02_echo;
+package step02_echo_01;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,7 +8,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-public class EchoIntClient {
+public class EchoClient {
     public void connect(String host, int port) {
         //worker线程池
         EventLoopGroup worker = new NioEventLoopGroup();
@@ -20,7 +20,7 @@ public class EchoIntClient {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
-                        socketChannel.pipeline().addLast(new EchoIntClientHandler());
+                        socketChannel.pipeline().addLast(new EchoClientHandler());
                     }
                 });
 
@@ -38,6 +38,6 @@ public class EchoIntClient {
     }
 
     public static void main(String[] args) {
-        new EchoIntClient().connect("127.0.0.1", 10086);
+        new EchoClient().connect("127.0.0.1", 10086);
     }
 }

@@ -1,4 +1,4 @@
-package step02_echo;
+package step02_echo_01;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -11,7 +11,7 @@ import io.netty.util.CharsetUtil;
 /**
  * 服务器具体handler
  */
-public class EchoIntServerHandler extends ChannelInboundHandlerAdapter {
+public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     /**
      * 监听新连接加入
      *
