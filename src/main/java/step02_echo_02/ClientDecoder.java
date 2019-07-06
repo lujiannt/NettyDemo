@@ -29,7 +29,7 @@ public class ClientDecoder extends ByteToMessageDecoder {
 //        out.add(byteBuf.toString(CharsetUtil.UTF_8));
         //手动指定缓存跳过当前已读的部分
 //        byteBuf.skipBytes(byteBuf.readableBytes());
-        //https://www.orchome.com/915
+        //缓存中可能读取出重复内容隐患：https://www.orchome.com/915
 
     }
 }
