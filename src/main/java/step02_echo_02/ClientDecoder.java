@@ -27,6 +27,7 @@ public class ClientDecoder extends ByteToMessageDecoder {
 
         //【注意.方法二】如果不想像上面那样先读出来，就必须在每次添加到out后手动指定bytebuf中指针位置
 //        out.add(byteBuf.toString(CharsetUtil.UTF_8));
+        //手动指定缓存跳过当前已读的部分
 //        byteBuf.skipBytes(byteBuf.readableBytes());
         //https://www.orchome.com/915
 
