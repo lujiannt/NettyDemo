@@ -1,11 +1,11 @@
-package step02_echo_02;
+package step03_pojo01_default;
 
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class EchoServerHandler extends ChannelInboundHandlerAdapter {
+public class PojoServerHandler extends ChannelInboundHandlerAdapter {
     /**
      * 监听新连接加入
      *
@@ -16,8 +16,11 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("有一个新的连接");
 
-        //此处无需先将内容写入bytebuf，将交由serverEncoder处理
-        ChannelFuture channelFuture = ctx.writeAndFlush("1314");
+        //此处写入对象发送给客户端
+        User user = new User("张三", 21);
+        Pet pet = new Pet("小黑1");
+        user.setPet(pet);
+        ChannelFuture channelFuture = ctx.writeAndFlush(user);
 
         channelFuture.addListener(new ChannelFutureListener() {
             @Override
